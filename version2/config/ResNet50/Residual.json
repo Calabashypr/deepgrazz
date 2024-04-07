@@ -1,0 +1,40 @@
+{
+  "name": "Residual",
+  "doc": "test conv2d",
+  "input_shape": [],
+  "network": [
+    {
+      "id": 0,
+      "name": "empty_seq_operator",
+      "params": {},
+      "state": "src",
+      "to": [
+        1,
+        2
+      ],
+      "from": []
+    },
+    {
+      "id": 1,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        2
+      ],
+      "from": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "add",
+      "params": {},
+      "state": "des",
+      "to": [],
+      "from": [
+        0
+      ]
+    }
+  ]
+}

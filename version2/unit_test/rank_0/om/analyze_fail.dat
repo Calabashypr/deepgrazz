@@ -1,0 +1,111 @@
+# 1.This file shows the parsed IR info when graph evaluating failed to help find the problem.
+# 2.You can search the last `------------------------>` to the node which is inferred failed.
+# 3.Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.dat to get more instructions.
+# ===============================================================================
+
+# [No.1] Default_wrapper.493
+# In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:463/    def construct(self, x):/
+funcgraph fg_493(
+        %para1 : Tensor(F32)[1, 3, 32, 32]    # x
+        , %para2 : Ref[Tensor(F32)][100, 100]    # weight
+    ) {
+
+#------------------------> 0
+    %1 = FuncGraph::fg_494(%para1)    #(Tensor(F32)[1, 3, 32, 32])    # fg_494=Default.494 #scope: Default
+#[CNode]497
+    Primitive::Return{prim_type=1}(%1)    #(Undefined) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]498
+}
+# order:
+#   1: @Default_wrapper.493:[CNode]497{[0]: ValueNode<FuncGraph> Default.494, [1]: x}
+#   2: @Default_wrapper.493:[CNode]498{[0]: ValueNode<Primitive> Return, [1]: [CNode]497}
+
+
+# [No.2] Default.494
+# In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:463/    def construct(self, x):/
+funcgraph fg_494[fg_493](
+        %para3 : Tensor(F32)[1, 3, 32, 32]    # x
+    ) {
+    %1 : Tuple[I64*4]TupleShape(NoShape, NoShape, NoShape, NoShape) = DoSignaturePrimitive::S-Prim-Shape{prim_type=1}(%para3)    #(Tensor(F32)[1, 3, 32, 32]) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:473/        if len(x_shape) != 2:/#фx_shape
+    %2 : NoneTypeNoShape = DoSignaturePrimitive::S-Prim-check_dense_input_shape{prim_type=1}(%1, "Dense")    #(Tuple[I64*4]TupleShape(NoShape, NoShape, NoShape, NoShape), StringNoShape) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:465/        check_dense_input_shape(x_shape, self.cls_name)/#[CNode]499
+    %3 : NoneTypeNoShape = Primitive::stop_gradient{prim_type=1}(%2)    #(NoneTypeNoShape) #scope: Default
+#[CNode]500
+    %4 : I64NoShape = FuncGraph::fg_501(%1)    #(Tuple[I64*4]TupleShape(NoShape, NoShape, NoShape, NoShape))    # fg_501=ms_len.501 #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]502
+    %5 : BoolNoShape = DoSignaturePrimitive::S-Prim-not_equal{prim_type=1}(%4, I64(2))    #(I64NoShape, I64NoShape) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]503
+    %6 : BoolNoShape = FuncGraph::fg_504(%5)    #(BoolNoShape)    # fg_504=bool_.504 #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]505
+    %7 : FuncNoShape = Primitive::Switch{prim_type=1}(%6, FuncGraph::fg_506, FuncGraph::fg_507)    #(BoolNoShape, FuncNoShape, FuncNoShape)    # fg_506=✓Default.506, fg_507=✗Default.507 #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]508
+    %8 : Tensor(F32)[96, 32] = %7() #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]509
+
+#------------------------> 1
+    %9 = FuncGraph::fg_495(%8)    #(Tensor(F32)[96, 32])    # fg_495=↓Default.495 #scope: Default
+#[CNode]510
+    %10 = Primitive::Depend{prim_type=1}[side_effect_propagate=I64(1)](%9, %3)    #(Undefined, NoneTypeNoShape) #scope: Default
+#[CNode]511
+    Primitive::Return{prim_type=1}(%10)    #(Undefined) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/#[CNode]512
+}
+# order:
+#   1: @Default.494:фx_shape{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Shape, [1]: x}
+#   2: @Default.494:[CNode]499{[0]: ValueNode<DoSignaturePrimitive> S-Prim-check_dense_input_shape, [1]: фx_shape, [2]: ValueNode<StringImm> Dense}
+#   3: @Default.494:[CNode]502{[0]: ValueNode<FuncGraph> ms_len.501, [1]: фx_shape}
+#   4: @Default.494:[CNode]503{[0]: ValueNode<DoSignaturePrimitive> S-Prim-not_equal, [1]: [CNode]502, [2]: ValueNode<Int64Imm> 2}
+#   5: @Default.494:[CNode]505{[0]: ValueNode<FuncGraph> bool_.504, [1]: [CNode]503}
+#   6: @Default.494:[CNode]508{[0]: ValueNode<Primitive> Switch, [1]: [CNode]505, [2]: ValueNode<FuncGraph> ✓Default.506, [3]: ValueNode<FuncGraph> ✗Default.507}
+#   7: @Default.494:[CNode]509{[0]: [CNode]508}
+#   8: @Default.494:фself.bias_add{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.layer.basic..<Dense::1827394020168>', [2]: ValueNode<Symbol> bias_add}
+#   9: @Default.494:[CNode]510{[0]: ValueNode<FuncGraph> ↓Default.495, [1]: [CNode]509}
+#  10: @Default.494:[CNode]511{[0]: ValueNode<Primitive> Depend, [1]: [CNode]510, [2]: [CNode]500}
+#  11: @Default.494:[CNode]512{[0]: ValueNode<Primitive> Return, [1]: [CNode]511}
+
+
+# [No.3] ↓Default.495
+# In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:466/        if len(x_shape) != 2:/
+funcgraph fg_495[fg_494](
+        %para4 : Tensor(F32)[96, 32]    # фx
+    ) {
+    %1 : BoolNoShape = FuncGraph::fg_504(Bool(0))    #(BoolNoShape)    # fg_504=bool_.504 #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:469/        if self.has_bias:/#[CNode]513
+    %2 : FuncNoShape = Primitive::Switch{prim_type=1}(%1, FuncGraph::fg_514, FuncGraph::fg_496)    #(BoolNoShape, FuncNoShape, FuncNoShape)    # fg_514=✓↓Default.514, fg_496=✗↓Default.496 #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:469/        if self.has_bias:/#[CNode]515
+
+#------------------------> 2
+    %3 = %2() #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:469/        if self.has_bias:/#[CNode]516
+    %4 = FuncGraph::fg_517(%3)    #(Undefined)    # fg_517=↓↓Default.517 #scope: Default
+#[CNode]518
+    Primitive::Return{prim_type=1}(%4)    #(Undefined) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:469/        if self.has_bias:/#[CNode]519
+}
+# order:
+#   1: @↓Default.495:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MatMul, [1]: фx, [2]: weight}
+#   2: @↓Default.495:[CNode]513{[0]: ValueNode<FuncGraph> bool_.504, [1]: ValueNode<BoolImm> false}
+#   3: @↓Default.495:[CNode]515{[0]: ValueNode<Primitive> Switch, [1]: [CNode]513, [2]: ValueNode<FuncGraph> ✓↓Default.514, [3]: ValueNode<FuncGraph> ✗↓Default.496}
+#   4: @↓Default.495:[CNode]516{[0]: [CNode]515}
+#   5: @↓Default.495:[CNode]518{[0]: ValueNode<FuncGraph> ↓↓Default.517, [1]: [CNode]516}
+#   6: @↓Default.495:[CNode]519{[0]: ValueNode<Primitive> Return, [1]: [CNode]518}
+
+
+# [No.4] ✗↓Default.496
+# In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:469/        if self.has_bias:/
+funcgraph fg_496[fg_495](
+) {
+
+#------------------------> 3
+    %1 = $(↓Default.495):DoSignaturePrimitive::S-Prim-MatMul{prim_type=1}[output_names=["output"], transpose_a=Bool(0), input_names=["x1", "x2"], transpose_x2=Bool(1), transpose_x1=Bool(0), transpose_b=Bool(1)](%para4, %para2)    #(Tensor(F32)[96, 32], Ref[Tensor(F32)][100, 100]) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:468/        x = self.matmul(x, self.weight)/#x
+    Primitive::Return{prim_type=1}(%1)    #(Undefined) #scope: Default
+      # In file D:\Anaconda3\envs\graph2\lib\site-packages\mindspore\nn\layer\basic.py:469/        if self.has_bias:/#[CNode]520
+}
+# order:
+#   1: @✗↓Default.496:[CNode]520{[0]: ValueNode<Primitive> Return, [1]: x}
+
+
+#===============================================================================
+# num of function graphs in stack: 4/5 (Ignored 1 internal frames).

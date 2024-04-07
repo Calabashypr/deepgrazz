@@ -1,0 +1,960 @@
+{
+  "name": "ResNet18",
+  "input_shape": [],
+  "network": [
+    {
+      "id": 0,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 1,
+        "out_channels": 64,
+        "kernel_size": 7,
+        "stride": 2,
+        "padding": 3
+      },
+      "state": "src",
+      "to": [
+        1
+      ],
+      "from": []
+    },
+    {
+      "id": 1,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 64
+      },
+      "state": "none",
+      "to": [
+        2
+      ],
+      "from": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MaxPool2d",
+      "params": {
+        "kernel_size": 3,
+        "stride": 2,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        3,
+        8
+      ],
+      "from": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        4
+      ],
+      "from": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 64
+      },
+      "state": "none",
+      "to": [
+        5
+      ],
+      "from": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        6
+      ],
+      "from": [
+        4
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        7
+      ],
+      "from": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 64
+      },
+      "state": "none",
+      "to": [
+        8
+      ],
+      "from": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        9
+      ],
+      "from": [
+        2,
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        10,
+        15
+      ],
+      "from": [
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        11
+      ],
+      "from": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 64
+      },
+      "state": "none",
+      "to": [
+        12
+      ],
+      "from": [
+        9
+      ]
+    },
+    {
+      "id": 12,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        13
+      ],
+      "from": [
+        11
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        14
+      ],
+      "from": [
+        12
+      ]
+    },
+    {
+      "id": 14,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 64
+      },
+      "state": "none",
+      "to": [
+        15
+      ],
+      "from": [
+        13
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        16
+      ],
+      "from": [
+        9,
+        14
+      ]
+    },
+    {
+      "id": 16,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        17,
+        22
+      ],
+      "from": [
+        15
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 64,
+        "out_channels": 128,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        18
+      ],
+      "from": [
+        16
+      ]
+    },
+    {
+      "id": 18,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 128
+      },
+      "state": "none",
+      "to": [
+        19
+      ],
+      "from": [
+        17
+      ]
+    },
+    {
+      "id": 19,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        20
+      ],
+      "from": [
+        18
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 128,
+        "out_channels": 128,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        21
+      ],
+      "from": [
+        19
+      ]
+    },
+    {
+      "id": 21,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 128
+      },
+      "state": "none",
+      "to": [
+        23
+      ],
+      "from": [
+        20
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 64,
+        "out_channels": 128,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        23
+      ],
+      "from": [
+        16
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        24
+      ],
+      "from": [
+        21,
+        22
+      ]
+    },
+    {
+      "id": 24,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        25,
+        30
+      ],
+      "from": [
+        23
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 128,
+        "out_channels": 128,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        26
+      ],
+      "from": [
+        24
+      ]
+    },
+    {
+      "id": 26,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 128
+      },
+      "state": "none",
+      "to": [
+        27
+      ],
+      "from": [
+        25
+      ]
+    },
+    {
+      "id": 27,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        28
+      ],
+      "from": [
+        26
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 128,
+        "out_channels": 128,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 0
+      },
+      "state": "none",
+      "to": [
+        29
+      ],
+      "from": [
+        27
+      ]
+    },
+    {
+      "id": 29,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 128
+      },
+      "state": "none",
+      "to": [
+        30
+      ],
+      "from": [
+        28
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        31
+      ],
+      "from": [
+        24,
+        29
+      ]
+    },
+    {
+      "id": 31,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        32,
+        37
+      ],
+      "from": [
+        30
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 128,
+        "out_channels": 256,
+        "kernel_size": 3,
+        "stride": 2,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        33
+      ],
+      "from": [
+        31
+      ]
+    },
+    {
+      "id": 33,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 256
+      },
+      "state": "none",
+      "to": [
+        34
+      ],
+      "from": [
+        32
+      ]
+    },
+    {
+      "id": 34,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        35
+      ],
+      "from": [
+        33
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 256,
+        "out_channels": 256,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        36
+      ],
+      "from": [
+        34
+      ]
+    },
+    {
+      "id": 36,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 256
+      },
+      "state": "none",
+      "to": [
+        38
+      ],
+      "from": [
+        35
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 128,
+        "out_channels": 256,
+        "kernel_size": 1,
+        "stride": 2,
+        "padding": 0
+      },
+      "state": "none",
+      "to": [
+        38
+      ],
+      "from": [
+        31
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        39
+      ],
+      "from": [
+        36,
+        37
+      ]
+    },
+    {
+      "id": 39,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        40
+      ],
+      "from": [
+        38
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 256,
+        "out_channels": 256,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        41
+      ],
+      "from": [
+        39
+      ]
+    },
+    {
+      "id": 41,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 256
+      },
+      "state": "none",
+      "to": [
+        42
+      ],
+      "from": [
+        40
+      ]
+    },
+    {
+      "id": 42,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        43
+      ],
+      "from": [
+        41
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 256,
+        "out_channels": 256,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        44
+      ],
+      "from": [
+        42
+      ]
+    },
+    {
+      "id": 44,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 256
+      },
+      "state": "none",
+      "to": [
+        45
+      ],
+      "from": [
+        43
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        46
+      ],
+      "from": [
+        44
+      ]
+    },
+    {
+      "id": 46,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        47,
+        52
+      ],
+      "from": [
+        45
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 256,
+        "out_channels": 512,
+        "kernel_size": 3,
+        "stride": 2,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        48
+      ],
+      "from": [
+        46
+      ]
+    },
+    {
+      "id": 48,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 512
+      },
+      "state": "none",
+      "to": [
+        49
+      ],
+      "from": [
+        47
+      ]
+    },
+    {
+      "id": 49,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        50
+      ],
+      "from": [
+        48
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 512,
+        "out_channels": 512,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        51
+      ],
+      "from": [
+        49
+      ]
+    },
+    {
+      "id": 51,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 512
+      },
+      "state": "none",
+      "to": [
+        53
+      ],
+      "from": [
+        50
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 256,
+        "out_channels": 512,
+        "kernel_size": 1,
+        "stride": 2,
+        "padding": 0
+      },
+      "state": "none",
+      "to": [
+        53
+      ],
+      "from": [
+        46
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        54
+      ],
+      "from": [
+        51,
+        52
+      ]
+    },
+    {
+      "id": 54,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        55
+      ],
+      "from": [
+        53
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 512,
+        "out_channels": 512,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        56
+      ],
+      "from": [
+        54
+      ]
+    },
+    {
+      "id": 56,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 512
+      },
+      "state": "none",
+      "to": [
+        57
+      ],
+      "from": [
+        55
+      ]
+    },
+    {
+      "id": 57,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        58
+      ],
+      "from": [
+        56
+      ]
+    },
+    {
+      "id": 58,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 512,
+        "out_channels": 512,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      },
+      "state": "none",
+      "to": [
+        59
+      ],
+      "from": [
+        57
+      ]
+    },
+    {
+      "id": 59,
+      "name": "BatchNorm2d",
+      "params": {
+        "_BatchNorm": 512
+      },
+      "state": "none",
+      "to": [
+        60
+      ],
+      "from": [
+        58
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Add",
+      "params": {},
+      "state": "none",
+      "to": [
+        61
+      ],
+      "from": [
+        59
+      ]
+    },
+    {
+      "id": 61,
+      "name": "ReLU",
+      "params": {},
+      "state": "none",
+      "to": [
+        62
+      ],
+      "from": [
+        60
+      ]
+    },
+    {
+      "id": 62,
+      "name": "AdaptiveAvgPool2d",
+      "params": {
+        "_AdaptiveAvgPoolNd": [
+          1,
+          1
+        ]
+      },
+      "state": "none",
+      "to": [
+        63
+      ],
+      "from": [
+        61
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Flatten",
+      "params": {},
+      "state": "none",
+      "to": [
+        64
+      ],
+      "from": [
+        62
+      ]
+    },
+    {
+      "id": 64,
+      "name": "Linear",
+      "params": {
+        "in_features": 512,
+        "out_features": 10
+      },
+      "state": "des",
+      "to": [],
+      "from": [
+        63
+      ]
+    }
+  ]
+}

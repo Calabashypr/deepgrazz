@@ -1,0 +1,91 @@
+{
+  "name": "sub_graph2",
+  "input_shape": [],
+  "network": [
+    {
+      "id": 0,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 1,
+        "out_channels": 64,
+        "kernel_size": 7,
+        "stride": 2,
+        "padding": 3
+      },
+      "state": "src",
+      "to": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "from": []
+    },
+    {
+      "id": 1,
+      "name": "Tanh",
+      "params": {},
+      "state": "none",
+      "to": [
+        2,
+        3,
+        4
+      ],
+      "from": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mul",
+      "params": {},
+      "state": "none",
+      "from": [
+        0,
+        1
+      ],
+      "to": [
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mul",
+      "params": {},
+      "state": "none",
+      "from": [
+        0,
+        1
+      ],
+      "to": [
+        5
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Mul",
+      "params": {},
+      "state": "none",
+      "from": [
+        0,
+        1
+      ],
+      "to": [
+        5
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Concat",
+      "params": {},
+      "state": "des",
+      "from": [
+        2,
+        3,
+        4
+      ],
+      "to": [
+      ]
+    }
+  ]
+}

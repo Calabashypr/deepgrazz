@@ -1,0 +1,127 @@
+{
+  "name": "sub_graph03",
+  "input_shape": [],
+  "network": [
+    {
+      "id": 0,
+      "name": "sigmoid",
+      "params": {},
+      "state": "src",
+      "to": [
+        1
+      ],
+      "from": []
+    },
+    {
+      "id": 1,
+      "name": "log",
+      "params": {},
+      "state": "none",
+      "to": [
+        2
+      ],
+      "from": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "tanh",
+      "params": {},
+      "state": "none",
+      "to": [
+        3
+      ],
+      "from": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "relu",
+      "params": {},
+      "state": "none",
+      "to": [
+        4
+      ],
+      "from": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "name": "softmax",
+      "params": {
+        "dim": -1
+      },
+      "state": "none",
+      "to": [
+        5
+      ],
+      "from": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "name": "sigmoid",
+      "params": {},
+      "state": "none",
+      "to": [
+        6
+      ],
+      "from": [
+        4
+      ]
+    },
+    {
+      "id": 6,
+      "name": "arctan",
+      "params": {},
+      "state": "none",
+      "to": [
+        7
+      ],
+      "from": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "name": "square",
+      "params": {},
+      "state": "none",
+      "to": [
+        8
+      ],
+      "from": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "name": "relu",
+      "params": {},
+      "state": "none",
+      "to": [
+        9
+      ],
+      "from": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "name": "softmax",
+      "params": {
+        "dim": -1
+      },
+      "state": "des",
+      "to": [
+      ],
+      "from": [
+        8
+      ]
+    }
+  ]
+}

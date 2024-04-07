@@ -1,0 +1,53 @@
+{
+  "operators": [
+    {
+      "softmax": {
+        "params": {
+          "dim": 0
+        },
+        "in_degree": 1,
+        "out_degree": 1
+      }
+    },
+    {
+      "relu": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "tanh": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "sigmoid": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "log": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "exp": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "sin": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "cos": {},
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "arctan": {},
+      "in_degree": 1,
+      "out_degree": 1
+    }
+  ]
+}

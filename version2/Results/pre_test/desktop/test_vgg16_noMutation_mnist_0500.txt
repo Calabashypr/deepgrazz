@@ -1,0 +1,44 @@
+
+final statics:
+total operators:28
+tensorflow --> nums:0,distinct_bugs:0
+mindspore --> nums:0,distinct_bugs:0
+torch --> nums:0,distinct_bugs:0
+tensorflow --> 
+mindspore --> 
+torch --> 
+
+generate models:10
+
+final statics:
+total operators:28
+tensorflow --> nums:0,distinct_bugs:0
+mindspore --> nums:0,distinct_bugs:0
+torch --> nums:0,distinct_bugs:0
+tensorflow --> 
+mindspore --> 
+torch --> 
+
+generate models:50
+
+final statics:
+total operators:28
+tensorflow --> nums:0,distinct_bugs:0
+mindspore --> nums:0,distinct_bugs:0
+torch --> nums:0,distinct_bugs:0
+tensorflow --> 
+mindspore --> 
+torch --> 
+
+generate models:100
+
+final statics:
+total operators:28
+tensorflow --> nums:0,distinct_bugs:0
+mindspore --> nums:0,distinct_bugs:0
+torch --> nums:0,distinct_bugs:0
+tensorflow --> 
+mindspore --> 
+torch --> 
+
+generate models:500

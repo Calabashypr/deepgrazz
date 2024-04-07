@@ -1,0 +1,228 @@
+{
+  "name": "vgg16",
+  "input_shape": [],
+  "network": [
+    {
+      "id": 0,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 3,
+        "out_channels": 6,
+        "kernel_size": 3
+      },
+      "state": "src",
+      "to": [
+        1
+      ],
+      "from": []
+    },
+    {
+      "id": 1,
+      "name": "Conv2d",
+      "params": {
+        "in_channels": 6,
+        "out_channels": 6,
+        "kernel_size": 3
+      },
+      "state": "none",
+      "to": [
+        2
+      ],
+      "from": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MaxPool2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        3
+      ],
+      "from": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        4
+      ],
+      "from": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        5
+      ],
+      "from": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "name": "MaxPool2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        6
+      ],
+      "from": [
+        4
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        7
+      ],
+      "from": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        8
+      ],
+      "from": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        9
+      ],
+      "from": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "name": "MaxPool2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        10
+      ],
+      "from": [
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        11
+      ],
+      "from": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        12
+      ],
+      "from": [
+        10
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Conv2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        13
+      ],
+      "from": [
+        11
+      ]
+    },
+    {
+      "id": 13,
+      "name": "MaxPool2d",
+      "params": {},
+      "state": "none",
+      "to": [
+        14
+      ],
+      "from": [
+        12
+      ]
+    },
+    {
+      "id": 14,
+      "name": "linear",
+      "params": {},
+      "state": "none",
+      "to": [
+        15
+      ],
+      "from": [
+        13
+      ]
+    },
+    {
+      "id": 15,
+      "name": "linear",
+      "params": {},
+      "state": "none",
+      "to": [
+        16
+      ],
+      "from": [
+        14
+      ]
+    },
+    {
+      "id": 16,
+      "name": "linear",
+      "params": {},
+      "state": "none",
+      "to": [
+        17
+      ],
+      "from": [
+        15
+      ]
+    },
+    {
+      "id": 17,
+      "name": "softmax",
+      "params": {},
+      "state": "des",
+      "to": [
+        18
+      ],
+      "from": [
+        16
+      ]
+    }
+  ]
+}
